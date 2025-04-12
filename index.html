@@ -4,21 +4,17 @@
   <meta charset="UTF-8">
   <title>Redirecting...</title>
   <script>
-    // 判断是否移动设备
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-    // 获取 Supabase 回传的 access_token
     const hash = window.location.hash;  // #access_token=xxx&id_token=xxx&type=signup
     const deeplink = `myapp://auth-callback${hash}`;
 
     if (isMobile) {
-      // 手机端自动跳转 App
       window.location.href = deeplink;
     } else {
-      // 非移动设备提示扫码
       document.write(`
-        <h2>请用手机打开这个链接</h2>
-        <p>或扫码下载 App</p>
+        <h2>Please open this link on your phone</h2>
+        <p>or scan to download App</p>
         <img src="https://yourdomain.com/download-qr.png" width="200" />
       `);
     }
